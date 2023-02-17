@@ -1,0 +1,32 @@
+<resources>
+
+    <string name="ui_cd_logo">Klickbares Pixabay logo</string>
+    <string name="ui_cd_search_icon">Icon für das Suchfeld</string>
+    <string name="ui_cd_search_clear_icon">Buttom zum löschen der Suchbegriffe</string>
+    <string name="ui_cd_hit_card_preview">Vorschaubild</string>
+    <string name="ui_cd_detail_image">Großes Bild</string>
+    <string name="ui_cd_detail_back">Zurück</string>
+    <string name="ui_cd_detail_likes">Likes</string>
+    <string name="ui_cd_detail_downloads">Downloads</string>
+    <string name="ui_cd_detail_comments">Kommentare</string>
+    <string name="ui_cd_detail_loading">Bild lädt</string>
+
+    <string name="search_terms">Suchbegriffe</string>
+    <string name="search_please_enter_terms">Gib Suchbegriffe ein</string>
+    <string name="search_no_item_found">Keine Bilder gefunden</string>
+    <string name="search_no_more_items_found">Keine weiteren Bilder</string>
+    <string name="search_error_api_connection">Keine Server-Verbindung</string>
+
+    <string name="search_detail_dialog_title">Details Ansehen?</string>
+    <string name="search_detail_dialog_body">Willst du mehr Details und ein höher aufgelöstes Bild sehen?</string>
+    <string name="search_detail_dialog_confirm_button">Ja</string>
+    <string name="search_detail_dialog_dismiss_button">Nein</string>
+
+    <string name="detail_zoom_reset">Doppelt tippen für Reset</string>
+    <string name="detail_error_imageid_missing">Image ID nicht übermittelt</string>
+    <string name="detail_error_imageid_format">Image ID nicht korrekt formatiert</string>
+    <string name="detail_error_image_load">Bild nicht gefunden</string>
+
+    <string name="external_no_browser_found">Kein Browser gefunden</string>
+
+</resources>

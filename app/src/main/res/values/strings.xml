@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name" translatable="false">Pixabay Search</string>
+
+    <string name="ui_powered_by" translatable="false">Powered by</string>
+
+    <string name="ui_cd_logo">Clickable Pixybay logo</string>
+    <string name="ui_cd_search_icon">Icon for search field</string>
+    <string name="ui_cd_search_clear_icon">Button for clearing search terms</string>
+    <string name="ui_cd_hit_card_preview">Preview image</string>
+    <string name="ui_cd_detail_image">Large image</string>
+    <string name="ui_cd_detail_back">Back</string>
+    <string name="ui_cd_detail_likes">Likes</string>
+    <string name="ui_cd_detail_downloads">Downloads</string>
+    <string name="ui_cd_detail_comments">Comments</string>
+    <string name="ui_cd_detail_loading">Image is loading</string>
+
+    <string name="search_terms">Search terms</string>
+    <string name="search_please_enter_terms">Enter search terms</string>
+    <string name="search_no_item_found">Nothing found</string>
+    <string name="search_no_more_items_found">No more images</string>
+    <string name="search_error_api_connection">No server connection</string>
+
+    <string name="search_detail_dialog_title">View Details?</string>
+    <string name="search_detail_dialog_body">Du you want to see more details and a higher resolution image?</string>
+    <string name="search_detail_dialog_confirm_button">Yes</string>
+    <string name="search_detail_dialog_dismiss_button">No</string>
+
+    <string name="detail_zoom_reset">Double-tap to reset</string>
+    <string name="detail_error_imageid_missing">Image ID not passed</string>
+    <string name="detail_error_imageid_format">Image ID not formatted correctly</string>
+    <string name="detail_error_image_load">Image not found</string>
+
+    <string name="external_no_browser_found">No browser found</string>
+
+</resources>
