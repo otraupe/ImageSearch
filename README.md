@@ -14,6 +14,7 @@ The app is written in Kotlin using [Jetpack Compose](https://developer.android.c
 - Dynamic loading of images with different sizes for various devices' screen sizes
 - Optimized landscape detail view (increased image view size)
 - Dedicated full-screen view for the larger image (with automatic return to initial scaling values)
+- Removal of the dialog leading to the detail view (was part of the requirements, but is not really needed)
 - Bug fixes: repeated Toast presentations, no user notification on reaching the API's default hit limit of 500, the occasional IndexOutOfBoundsException by Glide's image preloader (potentially a bug on their side)
 
 ## Licensing
