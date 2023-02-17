@@ -1,5 +1,5 @@
 # ImageSearch
-An Android app for searching images on [Pixabay](https://pixabay.com/)
+An Android app for browsing images from [Pixabay](https://pixabay.com/)
 
 ## What ImageSearch does
 This app was created for a code challenge. It lets you query the [Pixabay images search API](https://pixabay.com/api/docs/#api_search_images), displays the results in list form together with a preview image, and offers a detail view with a larger image and some additional information. The app also caches the search results and downloaded images for offline use--the cache is invalidated after 24h (as per the Pixabay API guidelines). Upon scrolling the app dynamically loads more search results and images. The image in the detail view is zoomable (pinch or double-tap).
