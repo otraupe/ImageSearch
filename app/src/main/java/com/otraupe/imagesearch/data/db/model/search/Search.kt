@@ -19,5 +19,5 @@ data class Search(
     val searchDate: Date = Date()
     ) {
     @Ignore
-    var imageItems: MutableList<ImageItem> = mutableListOf()
+    val imageItems: MutableList<ImageItem> = mutableListOf()
 }

@@ -5,7 +5,7 @@ import com.otraupe.imagesearch.data.db.model.search.Search
 
 data class SearchUiState(
     val searchTerm: String? = null,
-    var state: State = State.INIT,
+    val state: State = State.INIT,
     val images: List<ImageItem> = listOf(),
     var userMessageSent: Boolean = false
 ) {
@@ -16,8 +16,7 @@ data class SearchUiState(
         NONE_FOUND,
         NO_MORE_FOUND,
         ERROR_API,
-        ERROR_UNKNOWN,
-        USER_MESSAGE_SENT
+        ERROR_UNKNOWN
     }
     constructor(search: Search, state: State): this(
         searchTerm = search.term,

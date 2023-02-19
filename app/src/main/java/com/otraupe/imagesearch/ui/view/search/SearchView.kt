@@ -2,9 +2,11 @@ package com.otraupe.imagesearch.ui.view.search
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.content.res.Configuration
 import android.net.Uri
 import android.view.KeyEvent
 import android.widget.Toast
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -26,6 +28,7 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.key.onKeyEvent
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
@@ -72,7 +75,10 @@ fun SearchView(paddingValues: PaddingValues,    // bottom padding changes if bot
             .fillMaxSize()
             .padding(top = 32.dp)
     ) {
-        Row {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.End
+        ) {
             Text(
                 modifier = Modifier
                     .align(Alignment.Bottom)
@@ -81,10 +87,17 @@ fun SearchView(paddingValues: PaddingValues,    // bottom padding changes if bot
                 text = stringResource(id = R.string.ui_powered_by)
             )
             IconButton(
-                modifier = Modifier
-                    .wrapContentHeight()
-                    .padding(16.dp)
-                    .weight(1f),
+                modifier = if (context.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+                    Modifier
+                        .wrapContentHeight()
+                        .padding(16.dp)
+                        .weight(1f)
+                } else {
+                    Modifier
+                        .wrapContentHeight()
+                        .wrapContentWidth()
+                        .padding(16.dp)
+                       },
                 onClick = {
                     try {
                         val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(viewModel.providerHomeUrl))
@@ -94,7 +107,13 @@ fun SearchView(paddingValues: PaddingValues,    // bottom padding changes if bot
                     }
                 }
             ) {
-                Icon(
+                Image(
+                    modifier = if (context.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+                        Modifier.fillMaxWidth()
+                    } else {
+                        Modifier.width(320.dp).height(62.dp)
+                           },
+                    contentScale = ContentScale.FillWidth,
                     painter = painterResource(id = R.drawable.ic_pixbay_logo),
                     contentDescription = stringResource(id = R.string.ui_cd_logo)
                 )

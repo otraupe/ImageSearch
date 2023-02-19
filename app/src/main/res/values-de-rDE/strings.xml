@@ -23,10 +23,13 @@
     <string name="search_detail_dialog_dismiss_button">Nein</string>
 
     <string name="detail_zoom_reset">Doppelt tippen für Reset</string>
-    <string name="detail_error_imageid_missing">Image ID nicht übermittelt</string>
-    <string name="detail_error_imageid_format">Image ID nicht korrekt formatiert</string>
+    <string name="detail_error_image_id_missing">Image ID nicht übermittelt</string>
+    <string name="detail_error_image_id_format">Image ID nicht korrekt formatiert</string>
     <string name="detail_error_image_load">Bild nicht gefunden</string>
 
     <string name="external_no_browser_found">Kein Browser gefunden</string>
+
+    <string name="app_api_key_not_found">"API Key nicht gefunden, schließe App"</string>
+    <string name="app_api_error">Fehler bei API-Abfrage, API Key korrekt?</string>
 
 </resources>

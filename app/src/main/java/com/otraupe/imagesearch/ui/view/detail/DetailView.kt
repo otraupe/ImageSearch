@@ -58,12 +58,12 @@ fun DetailView(paddingValues: PaddingValues,
             val id: Long = imageId.toLong()
             viewModel.getImageData(id)
         } catch (e: NumberFormatException) {
-            Toast.makeText(context, R.string.detail_error_imageid_format, Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, R.string.detail_error_image_id_format, Toast.LENGTH_SHORT).show()
             navController.navigateUp()
             return
         }
     } else {
-        Toast.makeText(context, R.string.detail_error_imageid_missing, Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, R.string.detail_error_image_id_missing, Toast.LENGTH_SHORT).show()
         navController.navigateUp()
         return
     }

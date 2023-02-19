@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.traupe.imagesearch", appContext.packageName)
+        assertEquals("com.0traupe.imagesearch", appContext.packageName)
     }
 }

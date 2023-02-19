@@ -1,6 +1,9 @@
 package com.otraupe.imagesearch.data.repository
 
+import android.content.Context
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
+import com.otraupe.imagesearch.R
 import com.otraupe.imagesearch.data.db.model.imageItem.ImageItem
 import com.otraupe.imagesearch.data.db.model.imageItem.ImageItemDbRepository
 import com.otraupe.imagesearch.data.model.ImageResponse
@@ -10,6 +13,7 @@ import com.otraupe.imagesearch.data.db.model.searchImageItemCrossRef.SearchImage
 import com.otraupe.imagesearch.data.db.model.searchImageItemCrossRef.SearchImageItemCrossRefRepository
 import com.otraupe.imagesearch.data.network.*
 import com.otraupe.imagesearch.ui.view.search.SearchUiState
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -17,24 +21,42 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import timber.log.Timber
+import java.io.InputStream
 import java.util.*
 import javax.inject.Inject
 
 class ImageRepository @Inject constructor(
-    var searchDbRepository: SearchDbRepository,
-    var imageItemDbRepository: ImageItemDbRepository,
-    var searchImageItemCrossRefRepository: SearchImageItemCrossRefRepository
+    val searchDbRepository: SearchDbRepository,
+    val imageItemDbRepository: ImageItemDbRepository,
+    val searchImageItemCrossRefRepository: SearchImageItemCrossRefRepository,
+    @ApplicationContext val appContext: Context
     ) {
     private val langMap = mapOf<Locale, String>(
         Pair(Locale.GERMAN, "de"),
         Pair(Locale.GERMANY, "de"),
     )
+    private var apiKey: String
+
     private val apiInterface: ApiInterface = ApiClient.getApiClient().create(ApiInterface::class.java)
     private val scope = CoroutineScope(Dispatchers.Default)
 
     var liveData: MutableLiveData<SearchUiState>? = null
 
     init {
+        // load API key
+        try {
+            val inputStream: InputStream = appContext.assets.open("config.properties")
+            val p = Properties()
+            p.load(inputStream)
+            apiKey = p.getProperty("api.key", "")
+            inputStream.close()
+        } catch (e: Exception) {
+            apiKey = ""
+        }
+        if (apiKey == "") {
+            Toast.makeText(appContext, R.string.app_api_key_not_found, Toast.LENGTH_SHORT).show()
+            android.os.Process.killProcess(android.os.Process.myPid())
+        }
         // clear searches older than 24h
         scope.launch {
             val outdatedSearchTerms = searchDbRepository.findOutdatedSearches()
@@ -97,7 +119,7 @@ class ImageRepository @Inject constructor(
 
         val lang = langMap[locale] ?: DEFAULT_SEARCH_LANG
 
-        apiInterface.fetchImageHits(apiKey = API_KEY, query = text, lang = lang, page = page)
+        apiInterface.fetchImageHits(apiKey = apiKey, query = text, lang = lang, page = page)
             .enqueue(object : Callback<ImageResponse> {
 
                 override fun onFailure(call: Call<ImageResponse>, t: Throwable) {
@@ -116,7 +138,8 @@ class ImageRepository @Inject constructor(
                     if (response.code() != 200 || res == null) {
                         liveData?.value?.let { images.addAll(it.images) }       // keep current image list state
                         liveData?.postValue(SearchUiState(searchTerm = text,
-                            state = SearchUiState.State.ERROR_API, images = images))   // TODO: present user message (when can it happen?)
+                            state = SearchUiState.State.ERROR_API, images = images))
+                        Toast.makeText(appContext, R.string.app_api_error, Toast.LENGTH_SHORT).show()
                         return
                     }
                     if (res.hits.isEmpty()) {

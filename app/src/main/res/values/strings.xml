@@ -5,7 +5,7 @@
 
     <string name="ui_powered_by" translatable="false">Powered by</string>
 
-    <string name="ui_cd_logo">Clickable Pixybay logo</string>
+    <string name="ui_cd_logo">Clickable Pixabay logo</string>
     <string name="ui_cd_search_icon">Icon for search field</string>
     <string name="ui_cd_search_clear_icon">Button for clearing search terms</string>
     <string name="ui_cd_hit_card_preview">Preview image</string>
@@ -28,10 +28,13 @@
     <string name="search_detail_dialog_dismiss_button">No</string>
 
     <string name="detail_zoom_reset">Double-tap to reset</string>
-    <string name="detail_error_imageid_missing">Image ID not passed</string>
-    <string name="detail_error_imageid_format">Image ID not formatted correctly</string>
+    <string name="detail_error_image_id_missing">Image ID not passed</string>
+    <string name="detail_error_image_id_format">Image ID not formatted correctly</string>
     <string name="detail_error_image_load">Image not found</string>
 
     <string name="external_no_browser_found">No browser found</string>
+
+    <string name="app_api_key_not_found">API key not found, closing app</string>
+    <string name="app_api_error">Error querying API, API key correct?</string>
 
 </resources>

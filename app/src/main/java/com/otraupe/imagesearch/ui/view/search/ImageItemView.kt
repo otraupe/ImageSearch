@@ -116,7 +116,8 @@ fun ImageItemView(image: ImageItem, glideRequestManager: RequestManager, size: S
                         openDialog = false
                         onViewDetails(image.id.toString())
                     },
-                    shape = CircleShape
+                    shape = CircleShape,
+                    elevation = null
                 ) {
                     Text(text = stringResource(id = R.string.search_detail_dialog_confirm_button))
                 }

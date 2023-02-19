@@ -7,7 +7,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 const val BASE_URL = "https://pixabay.com/api/"
-const val API_KEY = "33449049-81055e6b656bc88a3d5230ef3"
 const val DEFAULT_SEARCH_LANG = "en"
 const val DEFAULT_PAGE_SIZE = 20
 const val DEFAULT_PAGE_NUMBER = 1
