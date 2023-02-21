@@ -31,5 +31,6 @@
 
     <string name="app_api_key_not_found">"API Key nicht gefunden, schließe App"</string>
     <string name="app_api_error">Fehler bei API-Abfrage, API Key korrekt?</string>
+    <string name="app_api_limit">Abfragelimit erreicht</string>
 
 </resources>

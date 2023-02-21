@@ -136,10 +136,15 @@ class ImageRepository @Inject constructor(
                     Timber.d("Queried page $page of ${res?.total} total images matching \"$text\"")
                     val images: MutableList<ImageItem> = mutableListOf()
                     if (response.code() != 200 || res == null) {
+                        if (response.code() == 400) {
+                            Toast.makeText(appContext, R.string.app_api_limit, Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(appContext, R.string.app_api_error, Toast.LENGTH_SHORT).show()
+                        }
+                        Timber.d("Response with code ${response.code()} and message \"${response.message()}\"")
                         liveData?.value?.let { images.addAll(it.images) }       // keep current image list state
                         liveData?.postValue(SearchUiState(searchTerm = text,
                             state = SearchUiState.State.ERROR_API, images = images))
-                        Toast.makeText(appContext, R.string.app_api_error, Toast.LENGTH_SHORT).show()
                         return
                     }
                     if (res.hits.isEmpty()) {
